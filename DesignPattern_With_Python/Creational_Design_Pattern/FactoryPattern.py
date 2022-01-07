@@ -10,13 +10,20 @@ that will be created
 It is used when we don't know how many or what type of objects will be needed until during runtime
 """
 
+"""
+Pros:
+ 1. Avoid tight coupling between the creator and the concrete products.
+ 2. Single Responsibility Principle: Move the product creation code into one place in the program, 
+ making the code easier to support.
+ 3. Open/Closed Principle : Introduce new types of products into the program without breaking existing client code.
+
+Cons:
+1. The code may become more complicated to introduce a lot of new subclasses to implement the pattern. 
+The best case scenario is to introducing the pattern into an existing hierarchy of creator classes.
+"""
 
 # declare a interface
 class IBus(metaclass=ABCMeta):
-
-    macH=10
-    startTime =100
-    endTime=200
 
     @staticmethod
     def get_bus_dimensions():
@@ -31,7 +38,6 @@ class SchoolBus(IBus):
         self.color = "Green"
 
     def get_bus_dimensions(self):
-
         return {"width": self.width, "height": self.height, "Color": self.color}
 
 
@@ -70,7 +76,6 @@ class BusFactory():
                 return CollegeBus()
             elif busType == "UniversityBus":
                 return UniversityBus()
-
             raise AssertionError("Bus not found")
 
         except AssertionError as _e:
@@ -84,3 +89,5 @@ if __name__ == "__main__":
     print(bus_factory.get_bus_dimensions())
     bus_factory = BusFactory.get_bus_type("UniversityBus")
     print(bus_factory.get_bus_dimensions())
+
+
