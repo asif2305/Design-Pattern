@@ -1,5 +1,5 @@
 # Resource
-# https://www.youtube.com/watch?v=04J_fL5zg3U&ab_channel=seanwasereytbe
+#    
 
 from abc import ABCMeta, abstractstaticmethod
 
